@@ -47,7 +47,7 @@ function playRound() { //function to get a random comp selection, user prompted 
 
 }
 
-function game() {
+function game() { //checks if player/computer wins are up to 5. if neither is, play again. if one reaches 5, reports the winner
     
 
     if (playerWins < 5 && computerWins < 5) {
