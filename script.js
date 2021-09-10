@@ -9,11 +9,16 @@ let playerWins = 0;
 let computerWins = 0;
 
 function computerSelection(values) { //randomly picks rps for the computer
-    computerChoice = values[Math.floor(Math.random() * values.length)];    
+    computerChoice = values[Math.floor(Math.random() * values.length)];
+    console.log(computerChoice);
+    document.getElementById("computerChoice").innerHTML = computerChoice;
 }
 
 function playerSelection() { //prompts the user to pick rps, converts answer to a lowercase string
-    playerChoice = prompt("Rock, paper, or scissors?").toLowerCase();
+    //playerChoice = prompt("Rock, paper, or scissors?").toLowerCase(); //old way in console
+
+    //need click listener on buttons
+    //if button = rock return rock
 }
 
 function playRound() { //function to get a random comp selection, user prompted selection, and checks who won
@@ -70,5 +75,8 @@ function game() { //checks if player/computer wins are up to 5. if neither is, p
     
 }
 
+computerSelection(values);
 
-game();
+//game();
+
+//playRound();

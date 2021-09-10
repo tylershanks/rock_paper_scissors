@@ -3,11 +3,48 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors Simulator</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <script src="script.js"></script>
 
     <body>
+    <div class="container">
 
+        <div id="spaceBox1">
+            <!-- Empty box for spacing -->
+        </div>
+
+        <div class="topRow">
+            <button onclick="playerChoice()" type="rockButton">Rock</button>
+            <button onclick="playerChoice()" type="paperButton">Paper</button>
+            <button onclick="playerChoice()" type="scissorsButton">Scissors</button>
+        </div>
+        
+        
+
+        <div class="middleRow">
+            <div>Comp Choice</div>
+            <div class="box" id="computerChoice">as<span id="computerChoice"></span></div>
+        </div>
+
+        
+
+        <div class="bottomRow">
+            <div id="bottomLeft">
+                <div>Your Score</div>
+                <div class="box" id="playerScore">100</div>
+            </div>
+            <div id="bottomRight">
+                <div>Computer Score</div>
+                <div class="box" id="computerScore">100</div>
+            </div>
+        </div>
+
+        <div id="spaceBox2">
+            <!-- Empty box for spacing -->
+        </div>
+    
+    </div>
     </body>
 </html>
