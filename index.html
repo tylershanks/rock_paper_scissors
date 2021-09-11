@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <script src="script.js"></script>
+    
 
     <body>
     <div class="container">
@@ -16,16 +16,16 @@
         </div>
 
         <div class="topRow">
-            <button onclick="playerChoice()" type="rockButton">Rock</button>
-            <button onclick="playerChoice()" type="paperButton">Paper</button>
-            <button onclick="playerChoice()" type="scissorsButton">Scissors</button>
+            <button id="rockButton">Rock</button>
+            <button id="paperButton">Paper</button>
+            <button id="scissorsButton">Scissors</button>
         </div>
         
         
 
         <div class="middleRow">
             <div>Comp Choice</div>
-            <div class="box" id="computerChoice">as<span id="computerChoice"></span></div>
+            <div class="box" id="computerChoice"></div>
         </div>
 
         
@@ -33,11 +33,11 @@
         <div class="bottomRow">
             <div id="bottomLeft">
                 <div>Your Score</div>
-                <div class="box" id="playerScore">100</div>
+                <div class="box" id="playerScore">0</div>
             </div>
             <div id="bottomRight">
                 <div>Computer Score</div>
-                <div class="box" id="computerScore">100</div>
+                <div class="box" id="computerScore">0</div>
             </div>
         </div>
 
@@ -47,4 +47,6 @@
     
     </div>
     </body>
+
+    <script src="script.js"></script>
 </html>
