@@ -8,12 +8,23 @@ let result = ""; //result of the individual game
 let playerWins = 0;
 let computerWins = 0;
 
+// "new" buttons used for when the game restarts. "old" buttons are deleted and replaced
+// by the restart button, then when the restart button is pressed, these "new" buttons
+// are re added in. also creaeted the restart button here to be used later
+let newRockButton = document.getElementById("rockButton")
+let newPaperButton = document.getElementById("paperButton")
+let newScissorsButton = document.getElementById("scissorsButton");
+let restartButton = document.createElement("BUTTON");
+        restartButton.id = 'restartButton';
+        restartButton.textContent = "Play Again";
 
-
+//listeners for all the buttons
 document.getElementById("rockButton").addEventListener("click", rockButton);
 document.getElementById("paperButton").addEventListener("click", paperButton);
 document.getElementById("scissorsButton").addEventListener("click", scissorsButton);
 
+//functions to run when buttons are clicked. changes player choice from
+//empty string/previous choice to the new choice then calls the playRound function
 function rockButton() {
     playerChoice = "rock"
     playRound();
@@ -29,15 +40,52 @@ function scissorsButton() {
     playRound();
 }
 
-function computerSelection(values) { //randomly picks rps for the computer
+//randomly picks rps for the computer
+function computerSelection(values) { 
     computerChoice = values[Math.floor(Math.random() * values.length)];
 }
 
+//old function for running this in the console
 function playerSelection() { //prompts the user to pick rps, converts answer to a lowercase string
-    playerChoice = prompt("Rock, paper, or scissors?").toLowerCase(); //old way in console
+    playerChoice = prompt("Rock, paper, or scissors?").toLowerCase(); 
 }
 
-function playRound() { //function to get a random comp selection, user prompted selection, and checks who won
+//resets wins to 0 both internally and visually, removes the restart button and adds
+//the "new" rock paper scissors buttons
+function restart() {
+    playerWins = 0;
+    computerWins = 0;
+    document.getElementById('playerScore').innerHTML = playerWins;
+    document.getElementById('computerScore').innerHTML = computerWins;
+    document.getElementById('result').innerHTML = "Result";
+    let topRow = document.querySelector('#topRow');
+        topRow.removeChild(restartButton);
+        topRow.appendChild(newRockButton);
+        topRow.appendChild(newPaperButton);
+        topRow.appendChild(newScissorsButton);
+}
+
+//removes "old" buttons and replaces them with a restart button. once the restart button
+//is clicked, calls the restart function
+function gameEnd() {
+    const rockButton = document.getElementById("rockButton")
+    rockButton.remove();
+
+    const paperButton = document.getElementById("paperButton")
+    paperButton.remove();
+
+    const scissorsButton = document.getElementById("scissorsButton")
+    scissorsButton.remove();
+    
+    let topRow = document.querySelector('#topRow');
+    topRow.appendChild(restartButton);
+    document.getElementById("restartButton").addEventListener("click", restart);
+
+}
+
+//called after user presses a rps button then calls for a random computer rps choice and 
+//displays it. Then compares choices and displays relevant info
+function playRound() {
 
     computerSelection(values);
     console.log(computerChoice);
@@ -51,6 +99,7 @@ function playRound() { //function to get a random comp selection, user prompted 
         playerWins += 1;
         console.log(playerWins);
         document.getElementById('playerScore').innerHTML = playerWins;
+        document.getElementById('result').innerHTML = "You win!";
     }
 
     else if (playerChoice == "rock" && computerChoice == "Paper" || 
@@ -60,22 +109,26 @@ function playRound() { //function to get a random comp selection, user prompted 
         computerWins += 1;
         console.log(computerWins);
         document.getElementById('computerScore').innerHTML = computerWins;
+        document.getElementById('result').innerHTML = "You lose :(";
     }
 
     else if (playerChoice == "rock" && computerChoice == "Rock" || 
     playerChoice == "paper" && computerChoice == "Paper" || 
     playerChoice == "scissors" && computerChoice == "Scissors") {
         result = "Tie!"
+        document.getElementById('result').innerHTML = "Tie!";
     }
 
     if (playerWins == 5) {
         console.log ("You won 5 times!");
-        alert("You won 5 times!");
+        document.getElementById('result').innerHTML = "You won 5 times!";
+        gameEnd();
     }
 
     else if (computerWins == 5) {
         console.log("Computer won 5 times :(");
-        alert("Computer won 5 times :(");
+        document.getElementById('result').innerHTML = "Computer won 5 times :(";
+        gameEnd();
     }
 
     //else {
@@ -84,7 +137,10 @@ function playRound() { //function to get a random comp selection, user prompted 
 
 }
 
-function game() { //checks if player/computer wins are up to 5. if neither is, play again. if one reaches 5, reports the winner
+//old way used in console
+//checks if player/computer wins are up to 5. if neither is, play again. 
+//if one reaches 5, reports the winner.
+function game() { 
   
 /*
     playRound();

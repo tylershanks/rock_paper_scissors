@@ -1,5 +1,6 @@
 html {
     background-color: rgb(32, 33, 36);
+    font-family: sans-serif;
   }
 
 body{
@@ -104,4 +105,10 @@ button:active {
     width: 100%;
 }
 
+#result {
+    color: rgb(185, 185, 185);
+}
 
+#bgText {
+    color: rgb(185, 185, 185);
+}
